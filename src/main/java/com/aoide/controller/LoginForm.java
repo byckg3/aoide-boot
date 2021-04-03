@@ -1,0 +1,36 @@
+package com.aoide.controller;
+
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
+
+public class LoginForm
+{
+    @NotBlank( message = "account cannot be null or empty string" ) 				// validates that the property is not null or whitespace
+    @Size( min = 8, max = 20, message = "account size must be between 8 and 20" )	// validates that the annotated property value has a size between the attributes min and max
+	private String account;
+
+    @Size(min = 10, max = 16, message = "password size must be between 8 and 16" )
+	private String password;
+
+	public LoginForm() {}
+
+	public LoginForm( String account, String password )
+	{
+		this.account = account;
+		this.password = password;
+	}
+
+    public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword( String password ) {
+		this.password = password;
+	}
+}

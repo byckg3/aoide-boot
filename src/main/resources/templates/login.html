@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Aoide</title>
+</head>
+<body>
+	<form method = "post" action="#" th:action="@{/login}" th:object="${loginForm}">
+        <table>
+            <tr>
+                <td colspan="3">會員登入</td>
+			</tr>
+            <tr>
+                <td>Account：</td>
+                <td><input type = "text" th:field = "*{account}"></td>
+                <td th:if = "${#fields.hasErrors( 'account' )}" th:errors = "*{account}">account error</td>
+            </tr>
+            <tr>
+                <td>Password：</td>
+                <td><input type = "password" th:field = "*{password}"></td>
+                <td th:if = "${#fields.hasErrors( 'password' )}" th:errors = "*{password}">password error</td>
+            </tr>
+            <tr>
+                <td></td>
+				<td>
+                    <input type = "submit" value = "login"/>
+                    <input type = "reset" value = "reset"/>
+                    <a href = "forgotPwd.html">忘記密碼？</a>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
