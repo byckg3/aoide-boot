@@ -21,10 +21,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.4.4'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.4'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.4.4'
 	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -37,9 +38,25 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.4'
 }
 
 test {
 	useJUnitPlatform()
+
+	failFast = true
+	
+	testLogging {
+        showStandardStreams = true
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+	afterSuite { desc, result ->
+        if ( !desc.parent ) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} passed, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
 }

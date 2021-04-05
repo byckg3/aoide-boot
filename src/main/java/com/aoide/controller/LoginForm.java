@@ -2,29 +2,31 @@ package com.aoide.controller;
 
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Email;
 
 public class LoginForm
 {
-    @NotBlank( message = "account cannot be null or empty string" ) 				// validates that the property is not null or whitespace
-    @Size( min = 8, max = 20, message = "account size must be between 8 and 20" )	// validates that the annotated property value has a size between the attributes min and max
-	private String account;
+    // @NotBlank( message = "email cannot be null or empty string" ) 				// validates that the property is not null or whitespace
+    // @Size( min = 8, max = 20, message = "email size must be between 8 and 20" )	// validates that the annotated property value has a size between the attributes min and max
+	@Email( message = "Email should be valid" )
+	private String email;
 
-    @Size(min = 10, max = 16, message = "password size must be between 8 and 16" )
+    @Size(min = 10, max = 20, message = "password size must be between 10 and 20" )
 	private String password;
 
 	public LoginForm() {}
 
-	public LoginForm( String account, String password )
+	public LoginForm( String email, String password )
 	{
-		this.account = account;
+		this.email = email;
 		this.password = password;
 	}
 
-    public String getAccount() {
-		return account;
+    public String getEmail() {
+		return email;
 	}
-	public void setAccount(String account) {
-		this.account = account;
+	public void setEmail( String email ) {
+		this.email = email;
 	}
 	
 	public String getPassword() {

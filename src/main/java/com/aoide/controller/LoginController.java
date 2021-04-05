@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.Valid;
 
-import com.aoide.model.member.Member;
+import com.aoide.model.member.Account;
 
 @Slf4j
 @Controller
@@ -31,7 +31,7 @@ public class LoginController
         {
             return "login";
         }
-        log.info( "account: {} password: {}", loginForm.getAccount(), loginForm.getPassword() );
+        log.info( "email: {} password: {}", loginForm.getEmail(), loginForm.getPassword() );
 
         //model.addAttribute( "name", member.getName() );
         return "welcome";
