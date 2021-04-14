@@ -34,5 +34,5 @@ public class Account implements java.io.Serializable
 	@Column( name = "role" )
 	private String role;
 
-	private boolean enabled = true;
+	private boolean enabled;
 }
