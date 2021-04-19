@@ -1,0 +1,9 @@
+spring:
+    datasource:
+        url: jdbc:h2:./aoide
+        username: sa
+        password: 1234
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: validate

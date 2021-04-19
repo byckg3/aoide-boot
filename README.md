@@ -1,5 +1,4 @@
 # 
-- DB
-    - [H2 Database](https://www.h2database.com/html/main.html)
-- Bootstrap
-    - [Bootstrap](https://getbootstrap.com/)
+###
+- Running unit tests with Gradle => ./gradlew clean test
+- ./gradlew bootRun --args="--spring.profiles.active=dev"
