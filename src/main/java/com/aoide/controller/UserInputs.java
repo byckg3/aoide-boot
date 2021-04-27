@@ -2,13 +2,13 @@ package com.aoide.controller;
 
 import javax.validation.constraints.Size;
 
+import com.aoide.model.user.Account;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Email;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import com.aoide.model.member.Account;
 
 @Setter
 @Getter

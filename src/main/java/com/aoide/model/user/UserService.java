@@ -1,8 +1,6 @@
-package com.aoide.model.member;
+package com.aoide.model.user;
 
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -22,7 +20,6 @@ public class UserService implements UserDetailsService
     private AccountRepository accountRepo;
     private PasswordEncoder encoder;
 
-    @Autowired
     public UserService( AccountRepository accountRepo, PasswordEncoder encoder )
     {
         this.accountRepo = accountRepo;
@@ -31,13 +28,20 @@ public class UserService implements UserDetailsService
 
     public Account createMemberAccount( Account userAccount )
     {
-        return createAccount( userAccount, "MEMBER" );
+        return createAccount( userAccount, Role.MEMBER );
     }
 
     public Optional< Account > findMemberAccountBy( String email )
     {
         Optional< Account > foundAccount = accountRepo.findByEmail( email );
         return foundAccount;
+    }
+
+    public void deleteMemberAccount( Account userAccount )
+    {
+        if ( userAccount.getRole() == Role.MEMBER ) {
+            accountRepo.delete( userAccount );
+        }
     }
 
     // email as username
@@ -52,7 +56,7 @@ public class UserService implements UserDetailsService
             UserDetails details = User.builder()
                                       .username( email )
                                       .password( userAccount.getPassword() )
-                                      .roles( userAccount.getRole() )
+                                      .roles( userAccount.getRole().name() )
                                       .accountLocked( !userAccount.isEnabled() )
                                       .accountExpired( !userAccount.isEnabled() )
                                       .credentialsExpired( !userAccount.isEnabled() )
@@ -63,7 +67,7 @@ public class UserService implements UserDetailsService
         throw new UsernameNotFoundException( email + " not found" );
     }
 
-    private Account createAccount( Account userAccount, String role )
+    private Account createAccount( Account userAccount, Role role )
     {
         String encodedPassword = encoder.encode( userAccount.getPassword() );
         userAccount.setPassword( encodedPassword );

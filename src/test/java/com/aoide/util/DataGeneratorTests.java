@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.stream.IntStream;
+
 class DataGeneratorTests
 {
     @ParameterizedTest( name = "@MethodSource#{index} : test_generateBase64RandomString( {arguments} )" )
@@ -14,5 +16,12 @@ class DataGeneratorTests
     {
         String randomString = DataGenerator.generateBase64RandomString( length );
         assertEquals( length, randomString.length() );
+    }
+
+    @Test
+    void test_generateRandomIntStream() throws Exception
+    {
+        IntStream intStream = DataGenerator.generateRandomIntStream();
+        assertEquals( DataGenerator.DATA_SIZE, ( int ) intStream.count() );
     }
 }

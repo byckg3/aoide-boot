@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.Date;
 import java.util.Base64;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 public class DataGenerator
@@ -16,13 +17,10 @@ public class DataGenerator
 
     public static IntStream generateRandomIntStream()
     {
-        IntStream.Builder builder = IntStream.builder();
-        for ( int i = 1; i <= DATA_SIZE; i++ )
-        {
-            int randomValue = ( int ) ( Math.random() * ( MAX_INT - MIN_INT + 1 ) + MIN_INT );
-            builder.add( randomValue );
-        }
-        return builder.build();
+        return DoubleStream.generate( Math::random )
+                           .mapToInt( value -> ( int ) ( value * ( MAX_INT - MIN_INT + 1 ) + MIN_INT ) )
+                           .distinct()
+                           .limit( DATA_SIZE );
     }
     
     public static String generateTimestamp()

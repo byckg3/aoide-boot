@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Aoide</title>
+</head>
+<body>
+	<h1 th:text="'Hello, ' + ${name}">welcome</h1>
+	<form method = "post" th:action="@{/logout}">
+		<div class="col-12">
+            <button class="btn btn-primary" type="submit">logout</button>
+        </div>
+	</form>
+</body>
+</html>

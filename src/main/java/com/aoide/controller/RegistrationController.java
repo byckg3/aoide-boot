@@ -1,9 +1,10 @@
 package com.aoide.controller;
 
-import org.springframework.ui.Model;
-
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.Model;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -14,38 +15,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
-import com.aoide.controller.UserInputs.LoginInput;
+import com.aoide.controller.UserInputs.RegisterInput;
 import com.aoide.model.user.Account;
 import com.aoide.model.user.UserService;
 
 @Slf4j
 @Controller
-@RequestMapping( "/login" )
-public class LoginController
+@RequestMapping( "/register" )
+public class RegistrationController
 {
     @Autowired
     private UserService userService;
-    
+
     @GetMapping
-    public String showLoginForm( UserInputs inputs )
+    public String showRegistrationForm( UserInputs userInputs )
     {
-        log.info( "showLoginForm" );
-        return "login";
+        return "register";
     }
 
     @PostMapping
-    public String login( Model model, @Validated( LoginInput.class ) UserInputs inputs, Errors errors )
+    public String register( Model model, @Validated( RegisterInput.class ) UserInputs userInputs, Errors errors )
     {
         if ( errors.hasErrors() )
         {
             log.error( "error");
-            return "login";
+            return "register";
         }
-        log.info( "email: {} password: {}", inputs.getEmail(), inputs.getPassword() );
+        log.info( "email: {} password: {} name: {}", userInputs.getEmail(), userInputs.getPassword(), userInputs.getName() );
 
-        // Account memberAccount = userService.findMemberAccountBy( inputs.getEmail() ).get();
-        // model.addAttribute( "account", memberAccount );
+        Account memberAccount = userService.createMemberAccount( userInputs.toAccount() );
+        model.addAttribute( "account", memberAccount );
 
-        return "register";
+        return "member";
     }
 }

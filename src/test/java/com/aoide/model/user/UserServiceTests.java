@@ -1,4 +1,4 @@
-package com.aoide.model.member;
+package com.aoide.model.user;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
@@ -11,8 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.aoide.model.member.Role;
 
 import static com.aoide.util.DataGenerator.generateTimestamp;
 import static com.aoide.util.DataGenerator.generateBase64RandomString;
