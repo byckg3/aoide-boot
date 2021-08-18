@@ -39,6 +39,10 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	def SELENIUM_VERSION = "4.0.0-beta-3"
+	testImplementation "org.seleniumhq.selenium:selenium-java:${SELENIUM_VERSION}"
+	testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.3'
 }
 
 test {

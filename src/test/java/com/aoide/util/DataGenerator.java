@@ -2,9 +2,9 @@ package com.aoide.util;
 
 import java.security.SecureRandom;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import java.util.Date;
 import java.util.Base64;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -14,6 +14,8 @@ public class DataGenerator
     public static int MIN_INT = 1;
     public static int MAX_INT = 100;
     public static int DATA_SIZE = 10;
+
+    public static String TIMESTAMP_PATTERN = "yyyyMMddHHmmssSSS";
 
     public static IntStream generateRandomIntStream()
     {
@@ -25,8 +27,9 @@ public class DataGenerator
     
     public static String generateTimestamp()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat( "yyyyMMddHHmmss" );
-        return sdf.format( new Date() );
+        var formatter = DateTimeFormatter.ofPattern( TIMESTAMP_PATTERN );
+      
+        return LocalDateTime.now().format( formatter );
     }
 
     public static String generateBase64RandomString( int length )

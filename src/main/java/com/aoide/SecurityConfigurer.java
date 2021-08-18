@@ -22,7 +22,7 @@ import com.aoide.model.user.UserService;
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 {
     @Autowired
-    private DataSource dataSource;
+    private PersistentTokenRepository tokenRepository;
 
     @Autowired
     private UserService userService;
@@ -34,7 +34,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
     }
 
     @Bean
-    public PersistentTokenRepository persistentTokenRepository()
+    public PersistentTokenRepository persistentTokenRepository( DataSource dataSource )
     {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource( dataSource );
@@ -55,7 +55,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
         http.authorizeRequests()
                 .antMatchers( "/", "/index", "/login", "/register" )
                     .permitAll()
-                .antMatchers( "/**" )
+                .antMatchers( "/member" )
                     .hasRole( "MEMBER" )
             .and()
                 .formLogin()
@@ -66,7 +66,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
                 .rememberMe()
                 .key( "uniqueAndSecret" )
                 .tokenValiditySeconds( 60 * 1 )
-                .tokenRepository( persistentTokenRepository() )
+                .tokenRepository( tokenRepository )
             .and()
                 .logout()
                     .deleteCookies( "JSESSIONID" )

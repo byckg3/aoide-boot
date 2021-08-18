@@ -46,13 +46,13 @@ public class AccountRepositoryTests
     }
 
     @Test
-    void test_repoExists()
+    void repoExists()
     {
         assertNotNull( accountRepo );
     }
 
     @Test
-    void test_saveAccountSuccessfully( )
+    void save_savedAccountHasAId( )
     {
         Account savedAccount = accountRepo.save( account );
 
@@ -60,7 +60,7 @@ public class AccountRepositoryTests
     }
 
     @Test
-    void test_findByEmail()
+    void findByEmail_foundAccountIsPresent()
     {
         accountRepo.save( account );
 

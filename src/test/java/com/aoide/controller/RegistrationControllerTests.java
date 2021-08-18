@@ -26,7 +26,7 @@ public class RegistrationControllerTests
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockBean // create and inject a mock
 	private UserService userService;
 
     Account account;
