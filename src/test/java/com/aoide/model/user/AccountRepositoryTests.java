@@ -12,11 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.aoide.util.AccountGenerator;
 import com.aoide.util.junit.extension.GeneratorExtenion;
 import com.aoide.util.junit.extension.GeneratedBy;
 
+@ActiveProfiles( "dev" )
 @SpringBootTest
 @ExtendWith( GeneratorExtenion.class) // An extension has a scope of influence, which is either at the class level or the method level
 public class AccountRepositoryTests
@@ -52,7 +54,7 @@ public class AccountRepositoryTests
     }
 
     @Test
-    void save_savedAccountHasAId( )
+    void save_savedAccountHasAnId( )
     {
         Account savedAccount = accountRepo.save( account );
 

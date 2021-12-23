@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'maven-publish'
 }
 
 group = 'com.aoide'
@@ -18,12 +19,20 @@ repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
+	maven {
+        url = uri( "https://maven.pkg.github.com/byckg3/utils" )
+        credentials {
+            username = project.findProperty( "gpr.user" )?: System.getenv( "GITHUB_ACTOR" )
+            password = project.findProperty( "gpr.token" )?: System.getenv( "GITHUB_TOKEN" )
+        }
+    }
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
@@ -38,11 +47,11 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	def SELENIUM_VERSION = "4.0.0-beta-3"
-	testImplementation "org.seleniumhq.selenium:selenium-java:${SELENIUM_VERSION}"
+	testImplementation "org.seleniumhq.selenium:selenium-java:4.0.0-beta-3"
+
 	testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.3'
+	testImplementation "byc:utils:0.0.1"
 }
 
 test {
