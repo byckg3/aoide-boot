@@ -9,9 +9,11 @@ import javax.validation.constraints.Email;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
+@ToString
 public class UserInputs
 {
 	@Email( groups = { LoginInput.class, RegisterInput.class }, message = "Email should be valid" )
