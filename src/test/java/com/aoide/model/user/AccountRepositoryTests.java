@@ -14,9 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import utils.junit.extension.GeneratorExtenion;
+import utils.junit.extension.GeneratedBy;
+
 import com.aoide.util.AccountGenerator;
-import com.aoide.util.junit.extension.GeneratorExtenion;
-import com.aoide.util.junit.extension.GeneratedBy;
 
 @ActiveProfiles( "dev" )
 @SpringBootTest

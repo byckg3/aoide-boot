@@ -5,15 +5,18 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AccountTests
+import com.aoide.util.AccountGenerator;
+
+public class AccountTest
 {
     private Account account;
 
     @BeforeEach
     void setUp()
     {
-        account = new Account();
+        account = AccountGenerator.generate();
     }
+
     @Test
     void test_setId()
     {

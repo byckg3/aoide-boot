@@ -49,7 +49,7 @@ dependencies {
 	testImplementation "org.seleniumhq.selenium:selenium-java:4.0.0-beta-3"
 
 	testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.3'
-	testImplementation "byc:utils:0.0.1"
+	testImplementation "byc:utils:0.0.2"
 }
 
 test {

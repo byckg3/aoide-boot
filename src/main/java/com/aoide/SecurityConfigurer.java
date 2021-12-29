@@ -22,31 +22,19 @@ import com.aoide.model.user.UserService;
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 {
     @Autowired
-    private PersistentTokenRepository tokenRepository;
-
-    @Autowired
     private UserService userService;
 
-    @Bean
-    public PasswordEncoder passwordEncoder()
-    {
-        return new BCryptPasswordEncoder(); // default strength = 10
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    @Bean
-    public PersistentTokenRepository persistentTokenRepository( DataSource dataSource )
-    {
-        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
-        tokenRepository.setDataSource( dataSource );
-        
-        return tokenRepository;
-    }
+    @Autowired
+    private PersistentTokenRepository persistentTokenRepository;
 
     @Override
     protected void configure( AuthenticationManagerBuilder auth ) throws Exception
     {
         auth.userDetailsService( userService )
-            .passwordEncoder( passwordEncoder() );
+            .passwordEncoder( passwordEncoder );
     }
 
     @Override
@@ -66,7 +54,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
                 .rememberMe()
                 .key( "uniqueAndSecret" )
                 .tokenValiditySeconds( 60 * 1 )
-                .tokenRepository( tokenRepository )
+                .tokenRepository( persistentTokenRepository )
             .and()
                 .logout()
                     .deleteCookies( "JSESSIONID" )
