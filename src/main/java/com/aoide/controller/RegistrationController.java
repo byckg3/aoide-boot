@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,18 +35,20 @@ public class RegistrationController
     }
 
     @PostMapping
-    public String register( Model model, @Validated( RegisterInput.class ) UserInputs userInputs, Errors errors )
+    public String processRegistration( RedirectAttributes model,
+                                       @Validated( RegisterInput.class ) UserInputs userInputs,
+                                       Errors errors )
     {
         if ( errors.hasErrors() )
         {
-            log.error( "error");
+            log.error( "error :\n" + userInputs );
             return "register";
         }
-        log.info( "email: {} password: {} name: {}", userInputs.getEmail(), userInputs.getPassword(), userInputs.getName() );
+        log.info( userInputs.toString() );
 
         Account memberAccount = userService.createMemberAccount( userInputs.toAccount() );
-        model.addAttribute( "account", memberAccount );
+        model.addFlashAttribute( "account", memberAccount );
 
-        return "member";
+        return "redirect:/index";
     }
 }
