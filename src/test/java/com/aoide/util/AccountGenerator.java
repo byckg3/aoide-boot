@@ -1,14 +1,14 @@
 package com.aoide.util;
 
+import java.util.function.Supplier;
+
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
-import static com.aoide.util.DataGenerator.generateBase64RandomString;
-import static com.aoide.util.DataGenerator.generateTimestamp;
-
-import java.util.function.Supplier;
+import static utils.DataGenerator.generateBase64RandomString;
+import static utils.DataGenerator.generateTimestamp;
 
 import com.aoide.model.user.Account;
 import com.aoide.model.user.Role;
@@ -24,16 +24,16 @@ public class AccountGenerator implements ParameterResolver, Supplier< Account >
     @Override
     public Object resolveParameter( ParameterContext parameterContext, ExtensionContext extensionContext ) throws ParameterResolutionException
     {
-        return AccountGenerator.generateAccount();
+        return AccountGenerator.generate();
     }
 
     @Override
     public Account get()
     {
-        return AccountGenerator.generateAccount();
+        return AccountGenerator.generate();
     }
 
-    public static Account generateAccount()
+    public static Account generate()
     {
         Account account = new Account();
         String email = "test" + generateTimestamp() + "@" + generateBase64RandomString( 5 ) + ".com";

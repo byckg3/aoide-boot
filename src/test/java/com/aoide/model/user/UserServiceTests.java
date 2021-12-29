@@ -49,7 +49,7 @@ public class UserServiceTests
     @BeforeEach
     void setUp()
     {
-        this.account = AccountGenerator.generateAccount();
+        this.account = AccountGenerator.generate();
 
         email = this.account.getEmail();
         rawPassword = this.account.getPassword();
