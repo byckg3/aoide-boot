@@ -6,5 +6,8 @@ spring:
         properties:
             hibernate.format_sql: true
 
+    data:
+        rest:
+            base-path: /api
 
 

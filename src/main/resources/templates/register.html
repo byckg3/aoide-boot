@@ -11,21 +11,21 @@
 <body>
 	<form class="row g-3" method = "post" th:action="@{/register}" th:object="${userInputs}">
         <div class="form-floating mb-3">
-            <input type="text" th:field="*{email}" class="form-control" id="email" name="email" placeholder = "name@example.com" required>
+            <input type="text" class="form-control" th:field="*{email}" placeholder = "name@example.com" required>
             <label for = "email">Email address</label>
             <div th:if = "${#fields.hasErrors( 'email' )}" th:errors = "*{email}">
                 invalid email.
             </div>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <input type="password" class="form-control" th:field="*{password}"  placeholder="Password">
             <label for = "password">Password</label>
             <div th:if = "${#fields.hasErrors( 'password' )}" th:errors = "*{password}">
                 invalid password.
             </div>
         </div>
         <div class = "form-floating mb-3">
-            <input type="text"  th:field="*{name}" class="form-control" id="name" name="name" placeholder="name@example.com">
+            <input type="text" class="form-control" th:field="*{name}" placeholder="name@example.com">
             <label for = "name">Name</label>
         </div>
         <div class="col-12">
