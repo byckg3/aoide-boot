@@ -1,4 +1,4 @@
-package com.aoide.model.user;
+package com.aoide.user.model;
 
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ import com.aoide.util.AccountGenerator;
 
 @ActiveProfiles( "dev" )
 @SpringBootTest
-@ExtendWith( GeneratorExtenion.class) // An extension has a scope of influence, which is either at the class level or the method level
+@ExtendWith( GeneratorExtenion.class ) // An extension has a scope of influence, which is either at the class level or the method level
 public class AccountRepositoryTest
 {
     @Autowired

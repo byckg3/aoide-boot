@@ -10,8 +10,8 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 import static utils.DataGenerator.generateBase64RandomString;
 import static utils.DataGenerator.generateTimestamp;
 
-import com.aoide.model.user.Account;
-import com.aoide.model.user.Role;
+import com.aoide.user.model.Account;
+import com.aoide.user.model.Role;
 
 public class AccountGenerator implements ParameterResolver, Supplier< Account >
 {

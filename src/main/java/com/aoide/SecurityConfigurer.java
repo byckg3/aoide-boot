@@ -1,5 +1,8 @@
 package com.aoide;
 
+import com.aoide.user.model.Role;
+import com.aoide.user.model.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +15,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-
-import com.aoide.model.user.Role;
-import com.aoide.model.user.UserService;
 
 @Configuration
 @EnableWebSecurity

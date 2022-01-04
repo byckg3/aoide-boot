@@ -1,4 +1,4 @@
-package com.aoide.controller;
+package com.aoide.user.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,8 +16,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import com.aoide.model.user.Account;
-import com.aoide.model.user.UserService;
+import com.aoide.user.model.Account;
+import com.aoide.user.model.UserService;
 
 // @WebMvcTest: to avoid creating the whole context and test only MVC controllers
 @SpringBootTest

@@ -1,4 +1,4 @@
-package com.aoide.model.user;
+package com.aoide.user.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +28,10 @@ import static org.mockito.BDDMockito.willDoNothing;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.aoide.user.model.Account;
+import com.aoide.user.model.AccountRepository;
+import com.aoide.user.model.Role;
+import com.aoide.user.model.UserService;
 import com.aoide.util.AccountGenerator;
 
 @ExtendWith( MockitoExtension.class )

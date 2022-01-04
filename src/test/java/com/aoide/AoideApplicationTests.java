@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.aoide.model.user.UserService;
+import com.aoide.user.model.UserService;
 
 @SpringBootTest // entire context to be created without starting the server
 class AoideApplicationTests

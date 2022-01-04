@@ -1,4 +1,4 @@
-package com.aoide.model.user;
+package com.aoide.user.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;

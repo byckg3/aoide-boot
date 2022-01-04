@@ -1,9 +1,6 @@
-package com.aoide.controller;
+package com.aoide.user.model;
 
 import javax.validation.constraints.Size;
-
-import com.aoide.model.user.Account;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Email;
 
@@ -46,11 +43,11 @@ public class UserInputs
 		return acc;
 	}
 
-	interface LoginInput {
+	public interface LoginInput {
         // validation group marker interface
     }
 
-    interface RegisterInput {
+    public interface RegisterInput {
         // validation group marker interface
     }
 }

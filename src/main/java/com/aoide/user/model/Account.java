@@ -1,4 +1,4 @@
-package com.aoide.model.user;
+package com.aoide.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

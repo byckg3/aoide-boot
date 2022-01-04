@@ -1,4 +1,4 @@
-package com.aoide.controller;
+package com.aoide.user.controller;
 
 import org.springframework.ui.Model;
 
@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
-import com.aoide.controller.UserInputs.LoginInput;
-import com.aoide.model.user.Account;
-import com.aoide.model.user.UserService;
+import com.aoide.user.model.Account;
+import com.aoide.user.model.UserInputs;
+import com.aoide.user.model.UserService;
+import com.aoide.user.model.UserInputs.LoginInput;
 
 @Slf4j
 @Controller

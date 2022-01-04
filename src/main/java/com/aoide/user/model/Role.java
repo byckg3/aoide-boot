@@ -1,4 +1,4 @@
-package com.aoide.model.user;
+package com.aoide.user.model;
 
 public enum Role {
     GUEST, MEMBER, ADMIN

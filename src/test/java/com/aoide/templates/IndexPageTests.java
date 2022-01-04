@@ -1,4 +1,4 @@
-package com.aoide.resources.templates;
+package com.aoide.templates;
 
 import java.util.concurrent.TimeUnit;
 

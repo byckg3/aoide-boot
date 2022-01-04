@@ -1,4 +1,4 @@
-package com.aoide.controller;
+package com.aoide.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,9 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 
-import com.aoide.controller.UserInputs.RegisterInput;
-import com.aoide.model.user.Account;
-import com.aoide.model.user.UserService;
+import com.aoide.user.model.Account;
+import com.aoide.user.model.UserInputs;
+import com.aoide.user.model.UserService;
+import com.aoide.user.model.UserInputs.RegisterInput;
 
 @Slf4j
 @Controller
