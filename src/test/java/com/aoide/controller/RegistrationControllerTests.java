@@ -19,8 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.aoide.model.user.Account;
 import com.aoide.model.user.UserService;
 
+// @WebMvcTest: to avoid creating the whole context and test only MVC controllers
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc // to inject a MockMvc instance and send HTTP requests
 public class RegistrationControllerTests
 {
     @Autowired

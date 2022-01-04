@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.aoide.model.user.UserService;
 
-@SpringBootTest
+@SpringBootTest // entire context to be created without starting the server
 class AoideApplicationTests
 {
 	@Autowired
