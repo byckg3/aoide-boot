@@ -35,9 +35,15 @@ public class UserService implements UserDetailsService
         return createAccount( userAccount, Role.MEMBER );
     }
     
-    public Optional< Account > findMemberAccountBy( String email )
+    public Optional< Account > findAccountBy( String email )
     {
         Optional< Account > foundAccount = accountRepo.findByEmail( email );
+        return foundAccount;
+    }
+
+    public Optional< Account > findAccountById( Long id )
+    {
+        Optional< Account > foundAccount = accountRepo.findById( id );
         return foundAccount;
     }
 
@@ -52,7 +58,7 @@ public class UserService implements UserDetailsService
     @Override
     public UserDetails loadUserByUsername( String email ) throws UsernameNotFoundException
     {
-        Optional< Account > foundAccount = findMemberAccountBy( email );
+        Optional< Account > foundAccount = findAccountBy( email );
         if ( foundAccount.isPresent() )
         {
             Account userAccount = foundAccount.get();

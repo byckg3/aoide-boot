@@ -44,7 +44,7 @@ public class LoginController
         }
         log.info( "email: {} password: {}", inputs.getEmail(), inputs.getPassword() );
 
-        // Account memberAccount = userService.findMemberAccountBy( inputs.getEmail() ).get();
+        // Account memberAccount = userService.findAccountBy( inputs.getEmail() ).get();
         // model.addAttribute( "account", memberAccount );
 
         return "register";

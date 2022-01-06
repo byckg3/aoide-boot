@@ -92,11 +92,11 @@ public class UserServiceTests
     }
 
     @Test
-    void findMemberAccountBy_findByEmailIsCalled()
+    void findAccountBy_findByEmailIsCalled()
     {
         given( accountRepository.findByEmail( email ) ).willReturn( Optional.of( account ) );
 
-        userService.findMemberAccountBy( email );
+        userService.findAccountBy( email );
 
         then( accountRepository ).should( times( 1 ) ).findByEmail( email );
     }
