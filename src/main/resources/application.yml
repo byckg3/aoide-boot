@@ -13,5 +13,10 @@ spring:
     data:
         rest:
             base-path: /api
+            
+# set default profile to 'dev'
+    profiles:
+        active:
+        - dev
 
 
