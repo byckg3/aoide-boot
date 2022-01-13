@@ -1,10 +1,12 @@
 CREATE TABLE IF NOT EXISTS accounts (
-    id          IDENTITY        NOT NULL    AUTO_INCREMENT,
-    email       VARCHAR(64)     NOT NULL    UNIQUE,
-    password    VARCHAR(64)     NOT NULL,
-    name 	    VARCHAR(64)     NOT NULL,
-    role        VARCHAR(32)     NOT NULL,
-    enabled     BOOLEAN         DEFAULT FALSE,
+    id              IDENTITY        NOT NULL    AUTO_INCREMENT,
+    email           VARCHAR(64)     NOT NULL    UNIQUE,
+    password        VARCHAR(64)     NOT NULL,
+    name 	        VARCHAR(64)     NOT NULL,
+    role            VARCHAR(32)     NOT NULL,
+    enabled         BOOLEAN         DEFAULT FALSE,
+    created_date    TIMESTAMP       NOT NULL,
+    last_modified   TIMESTAMP       NULL,
     PRIMARY KEY (id)
 );
 

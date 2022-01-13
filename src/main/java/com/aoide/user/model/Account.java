@@ -27,7 +27,7 @@ public class Account implements java.io.Serializable
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@GeneratedValue( strategy = GenerationType.AUTO )
 	private Long id;
 
 	@Column( name = "email", unique = true )
@@ -47,6 +47,6 @@ public class Account implements java.io.Serializable
 	private Date createdDate;
 
 	@LastModifiedDate
-	@Column( name = "modified_date" )
-	private Date modifiedDate;
+	@Column( name = "last_modified" )
+	private Date lastModified;
 }

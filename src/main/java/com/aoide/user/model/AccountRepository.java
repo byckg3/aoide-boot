@@ -2,9 +2,14 @@ package com.aoide.user.model;
 
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
-public interface AccountRepository extends CrudRepository< Account, Long >
+@RepositoryRestResource( path = "accounts", collectionResourceRel = "accounts" ) // optional and used to customize the REST endpoint.
+public interface AccountRepository extends PagingAndSortingRepository< Account, Long >
 {
-   Optional< Account > findByEmail( String email );
+    @RestResource( path = "byEmail", rel = "search_email" )
+    Optional< Account > findByEmail( @Param( "email" ) String email );
 }
