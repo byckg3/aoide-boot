@@ -70,7 +70,6 @@ public class AccountRepositoryTest
         assumeAccuntRepositoryExists();
 
         accountRepo.save( account );
-
         Optional< Account > foundAccount = accountRepo.findByEmail( email );
 
         assertTrue( foundAccount.isPresent() );

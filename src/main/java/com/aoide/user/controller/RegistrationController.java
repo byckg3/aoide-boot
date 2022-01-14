@@ -17,9 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import lombok.extern.slf4j.Slf4j;
 
 import com.aoide.user.model.Account;
-import com.aoide.user.model.UserInputs;
+import com.aoide.user.model.AccountDTO;
 import com.aoide.user.model.UserService;
-import com.aoide.user.model.UserInputs.RegisterInput;
+import com.aoide.user.model.AccountDTO.RegisterInput;
 
 @Slf4j
 @Controller
@@ -30,14 +30,14 @@ public class RegistrationController
     private UserService userService;
 
     @GetMapping
-    public String showRegistrationForm( UserInputs userInputs )
+    public String showRegistrationForm( AccountDTO userInputs )
     {
         return "register";
     }
 
     @PostMapping
     public String processRegistration( RedirectAttributes model,
-                                       @Validated( RegisterInput.class ) UserInputs userInputs,
+                                       @Validated( RegisterInput.class ) AccountDTO userInputs,
                                        Errors errors )
     {
         if ( errors.hasErrors() )
@@ -47,7 +47,7 @@ public class RegistrationController
         }
         log.info( userInputs.toString() );
 
-        Account memberAccount = userService.createMemberAccount( userInputs.toAccount() );
+        Account memberAccount = userService.createMemberAccount( userInputs.toEntity() );
         model.addFlashAttribute( "account", memberAccount );
 
         return "redirect:/index";

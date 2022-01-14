@@ -60,6 +60,7 @@ public class AoideSecurityConfigurer extends WebSecurityConfigurerAdapter
                 .logout()
                     .deleteCookies( "JSESSIONID" )
                     .logoutSuccessUrl( "/" );
+        //http.csrf().disable();
     }
 
     @Override

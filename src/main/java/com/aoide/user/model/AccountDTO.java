@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class UserInputs
+public class AccountDTO
 {
 	@Email( groups = { LoginInput.class, RegisterInput.class }, message = "Email should be valid" )
 	private String email;
@@ -25,15 +25,15 @@ public class UserInputs
 	@NotBlank( groups = { RegisterInput.class }, message = "name cannot be null or empty string" )
 	private String name;
 
-	public UserInputs() {}
+	public AccountDTO() {}
 
-	public UserInputs( String email, String password )
+	public AccountDTO( String email, String password )
 	{
 		this.email = email;
 		this.password = password;
 	}
 
-	public Account toAccount()
+	public Account toEntity()
 	{
 		Account acc = new Account();
 		acc.setEmail( email );

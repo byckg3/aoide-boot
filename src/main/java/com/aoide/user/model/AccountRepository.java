@@ -12,4 +12,12 @@ public interface AccountRepository extends PagingAndSortingRepository< Account, 
 {
     @RestResource( path = "byEmail", rel = "search_email" )
     Optional< Account > findByEmail( @Param( "email" ) String email );
+
+    @Override
+    @RestResource( exported = false )
+    < S extends Account > S save( S entity );
+
+    @Override
+    @RestResource( exported = false )
+    < S extends Account > Iterable< S > saveAll( Iterable< S > entities );
 }

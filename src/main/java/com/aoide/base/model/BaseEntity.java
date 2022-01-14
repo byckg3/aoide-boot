@@ -3,6 +3,7 @@ package com.aoide.base.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,12 +12,14 @@ import javax.persistence.Version;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@EntityListeners( value = AuditingEntityListener.class )
 @MappedSuperclass  // base class for entity with common properties
 public abstract class BaseEntity
 {

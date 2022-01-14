@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.slf4j.Slf4j;
 
 import com.aoide.user.model.Account;
-import com.aoide.user.model.UserInputs;
+import com.aoide.user.model.AccountDTO;
 import com.aoide.user.model.UserService;
-import com.aoide.user.model.UserInputs.LoginInput;
+import com.aoide.user.model.AccountDTO.LoginInput;
 
 @Slf4j
 @Controller
@@ -28,14 +28,14 @@ public class LoginController
     private UserService userService;
     
     @GetMapping
-    public String showLoginForm( UserInputs inputs )
+    public String showLoginForm( AccountDTO inputs )
     {
         log.info( "showLoginForm" );
         return "login";
     }
 
     @PostMapping
-    public String login( Model model, @Validated( LoginInput.class ) UserInputs inputs, Errors errors )
+    public String login( Model model, @Validated( LoginInput.class ) AccountDTO inputs, Errors errors )
     {
         if ( errors.hasErrors() )
         {

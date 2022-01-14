@@ -6,37 +6,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.aoide.user.model.Account;
 import com.aoide.user.model.UserService;
 
-@RestController
-@RequestMapping( path = "/account", produces = "application/json" )
+@RepositoryRestController
 class AccountController
 {
     @Autowired
     private UserService userService;
 
-    @GetMapping( "/ping" )
+    @GetMapping( "/ping/a" )
+    @ResponseBody
     public String ping()
     {
+        System.out.println( "aaaaaaa");
         return "Hello, travler";
     }
 
-    @GetMapping( "/{id}" )
-    public Account findAccount( @PathVariable( "id" ) Long id )
-    {
-        try
-        {
-            var foundAccount = userService.findAccountById( id );
-
-            return foundAccount.get();
-        }
-        catch( Exception e )
-        {
-            throw new ResponseStatusException( HttpStatus.NOT_FOUND, "account not found", e );
-        }
-    }
+    
 }
