@@ -2,6 +2,8 @@ package com.aoide.util;
 
 import java.util.function.Supplier;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -35,14 +37,14 @@ public class AccountGenerator implements ParameterResolver, Supplier< Account >
 
     public static Account generate()
     {
-        Account account = new Account();
         String email = "test" + generateTimestamp() + "@" + generateBase64RandomString( 5 ) + ".com";
-        String rawPassword = generateBase64RandomString( 10 );
+        String name = RandomStringUtils.randomAlphabetic( 10 );
+        String rawPassword = RandomStringUtils.randomAlphanumeric( 10 );
 
-        account = new Account();
+        var account = new Account();
         account.setEmail( email );
         account.setPassword( rawPassword );
-        account.setName( generateBase64RandomString( 5 ) );
+        account.setName( name );
         account.setRole( Role.GUEST );
 
         return account;

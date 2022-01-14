@@ -4,11 +4,13 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,19 +21,20 @@ import utils.junit.extension.GeneratedBy;
 
 import com.aoide.util.AccountGenerator;
 
+@Tag( "db" )
 @ActiveProfiles( "dev" )
 @SpringBootTest
 @ExtendWith( GeneratorExtenion.class ) // An extension has a scope of influence, which is either at the class level or the method level
 public class AccountRepositoryTest
 {
     @Autowired
-    AccountRepository accountRepo;
+    private AccountRepository accountRepo;
 
     @GeneratedBy( AccountGenerator.class )
     private Account account;
 
-    String email;
-    String password;
+    private String email;
+    private String password;
 
     @BeforeEach
     void setUp()
@@ -49,26 +52,32 @@ public class AccountRepositoryTest
     }
 
     @Test
-    void repoExists()
+    void whenSaveEntity_thenCommonPropertiesExist( )
     {
-        assertNotNull( accountRepo );
-    }
+        assumeAccuntRepositoryExists();
 
-    @Test
-    void save_savedAccountHasAnId( )
-    {
         Account savedAccount = accountRepo.save( account );
 
         assertNotNull( savedAccount.getId() );
+        assertNotNull( savedAccount.getCreatedDate() );
+        assertNotNull( savedAccount.getLastModified() );
+        assertNotNull( savedAccount.getVersion() );
     }
 
     @Test
-    void findByEmail_foundAccountIsPresent()
+    void whenFindAccountByEmail_thenFoundAccountIsPresent()
     {
+        assumeAccuntRepositoryExists();
+
         accountRepo.save( account );
 
         Optional< Account > foundAccount = accountRepo.findByEmail( email );
 
         assertTrue( foundAccount.isPresent() );
+    }
+
+    private void assumeAccuntRepositoryExists()
+    {
+        assumeTrue( accountRepo != null, "repository is not injected" );
     }
 }

@@ -15,6 +15,7 @@ public class AccountTest
     void setUp()
     {
         account = AccountGenerator.generate();
+        //System.out.println( account );
     }
 
     @Test
