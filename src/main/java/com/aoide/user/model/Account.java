@@ -9,8 +9,10 @@ import javax.persistence.Table;
 import com.aoide.base.model.BaseEntity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode( callSuper = true )
 @Entity
 @Table( name = "accounts" )
 public class Account extends BaseEntity implements java.io.Serializable

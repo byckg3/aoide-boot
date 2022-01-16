@@ -14,11 +14,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
+@Data
 @EntityListeners( value = AuditingEntityListener.class )
 @MappedSuperclass  // base class for entity with common properties
 public abstract class BaseEntity
