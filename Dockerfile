@@ -1,10 +1,4 @@
 FROM openjdk:17-jdk-alpine
-
 WORKDIR /usr/src/aoide-boot
-
 EXPOSE 8081
-
-# COPY . /usr/src/aoide-boot
-
-
 CMD [ "java", "-version" ]

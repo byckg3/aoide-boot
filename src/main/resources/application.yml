@@ -17,6 +17,6 @@ spring:
 # set default profile to 'dev'
     profiles:
         active:
-        - dev
+            - dev
 
 
