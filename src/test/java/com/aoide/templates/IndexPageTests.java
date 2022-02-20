@@ -49,7 +49,7 @@ public class IndexPageTests
     @Test
     void indexPageExist()
     {
-        driver.get( "http://localhost:" + port );
+        driver.get( "http://localhost:" + port + "/aoide/" );
         String title = driver.getTitle();
         
         assertTrue( title.contains( "Aoide" ) );
