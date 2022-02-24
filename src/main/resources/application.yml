@@ -3,6 +3,9 @@ server:
         context-path: /aoide
 
 spring:
+    profiles:  # set default profile to 'dev'
+        active:
+            - dev
     jpa:
         hibernate:
             ddl-auto: none
@@ -14,9 +17,13 @@ spring:
         rest:
             base-path: /api
             
-# set default profile to 'dev'
-    profiles:
-        active:
-            - dev
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    github:
+                        clientId: clientId
+                        clientSecret: github-client-secret
 
 

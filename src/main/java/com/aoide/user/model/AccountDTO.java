@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class AccountDTO
 {
-	@Email( groups = { LoginInput.class, RegisterInput.class }, message = "Email should be valid" )
+	@Email( groups = { LoginInput.class, RegisterInput.class }, message = "invalid email" )
 	private String email;
 
 	// validates that the annotated property value has a size between the attributes min and max

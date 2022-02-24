@@ -5,7 +5,8 @@
 	<title>Aoide</title>
 </head>
 <body>
-	<h1 th:text="'Hello, ' + ${account.name}">welcome</h1>
+	<h1 th:text="'Hello, ' + ${session.account.name}">Hello</h1>
+	<!--<h1 >Hello</h1> -->
 	<form method = "post" th:action="@{/logout}">
 		<div class="col-12">
             <button class="btn btn-primary" type="submit">logout</button>

@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 @Configuration
@@ -28,6 +29,9 @@ public class AoideSecurityConfigurer extends WebSecurityConfigurerAdapter
 
     @Autowired
     private PersistentTokenRepository persistentTokenRepository;
+
+    @Autowired
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Override
     protected void configure( AuthenticationManagerBuilder auth ) throws Exception
@@ -51,6 +55,8 @@ public class AoideSecurityConfigurer extends WebSecurityConfigurerAdapter
                     .loginPage( "/login" )
                     .usernameParameter( "email" )
                     .passwordParameter( "password" )
+                    .defaultSuccessUrl( "/member", true )
+                    .successHandler( authenticationSuccessHandler )
             .and()
                 .rememberMe()
                 .key( "uniqueAndSecret" )
@@ -60,7 +66,7 @@ public class AoideSecurityConfigurer extends WebSecurityConfigurerAdapter
                 .logout()
                     .deleteCookies( "JSESSIONID" )
                     .logoutSuccessUrl( "/" );
-        //http.csrf().disable();
+        http.csrf().disable();
     }
 
     @Override

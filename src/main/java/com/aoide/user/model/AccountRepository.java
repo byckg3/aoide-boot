@@ -20,4 +20,8 @@ public interface AccountRepository extends PagingAndSortingRepository< Account, 
     @Override
     @RestResource( exported = false )
     < S extends Account > Iterable< S > saveAll( Iterable< S > entities );
+
+    @Override
+    @RestResource( exported = false )
+    void delete( Account account );
 }

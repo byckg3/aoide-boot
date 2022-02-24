@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,11 +20,11 @@ class AccountController
     @Autowired
     private UserService userService;
 
-    @GetMapping( "/ping/a" )
+    @GetMapping( "/ping" )
     @ResponseBody
     public String ping()
     {
-        System.out.println( "aaaaaaa");
+        System.out.println( "pong");
         return "Hello, travler";
     }
 

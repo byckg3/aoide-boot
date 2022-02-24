@@ -20,6 +20,7 @@ public class AoideApplication
 {
 	@Autowired
     private DataSource dataSource;
+    
 	public static void main( String[] args ) {
 		SpringApplication.run( AoideApplication.class, args );
 	}
