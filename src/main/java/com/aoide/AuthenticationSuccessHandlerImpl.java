@@ -38,7 +38,7 @@ public class AuthenticationSuccessHandlerImpl extends SavedRequestAwareAuthentic
         String userName;
         Object principal = authentication.getPrincipal();
         
-        if( principal instanceof UserDetails )
+        if ( principal instanceof UserDetails )
         {
             Account account = new Account();
 
@@ -47,7 +47,8 @@ public class AuthenticationSuccessHandlerImpl extends SavedRequestAwareAuthentic
 
             session.setAttribute( "account", account );
 
-        }else {
+        }
+        else {
             userName = principal.toString();
         }
         log.info( "userName: {}", userName );
