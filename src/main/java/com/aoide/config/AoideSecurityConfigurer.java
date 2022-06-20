@@ -1,5 +1,6 @@
-package com.aoide;
+package com.aoide.config;
 
+import com.aoide.filter.CsrfTokenLogger;
 import com.aoide.user.model.Role;
 import com.aoide.user.model.UserService;
 
@@ -16,6 +17,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.csrf.CsrfFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -44,12 +46,18 @@ public class AoideSecurityConfigurer extends WebSecurityConfigurerAdapter
     protected void configure( HttpSecurity http ) throws Exception
     {
         http.authorizeRequests()
-                .antMatchers( "/", "/index", "/login", "/register" )
+                .mvcMatchers( "/", "/index", "/login", "/register" )
                     .permitAll()
-                .antMatchers( "/member" )
+                .mvcMatchers( "/member" )
                     .hasRole( Role.MEMBER.name() )
-                .antMatchers( "/actuator/**" )
+                .mvcMatchers( "/actuator/**" )
                     .hasRole( Role.ADMIN.name() )
+                .mvcMatchers( "/api/**" )
+                    .hasRole( Role.MEMBER.name() )
+            .and()
+                .httpBasic()
+                    .realmName( "API" )
+                    .authenticationEntryPoint( new AoideAuthenticationEntryPoint() )
             .and()
                 .formLogin()
                     .loginPage( "/login" )
@@ -65,8 +73,9 @@ public class AoideSecurityConfigurer extends WebSecurityConfigurerAdapter
             .and()
                 .logout()
                     .deleteCookies( "JSESSIONID" )
-                    .logoutSuccessUrl( "/" );
-        http.csrf().disable();
+                    .logoutSuccessUrl( "/" )
+            .and()
+                .addFilterAfter( new CsrfTokenLogger(), CsrfFilter.class );
     }
 
     @Override

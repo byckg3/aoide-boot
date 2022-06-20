@@ -22,7 +22,6 @@ public class AccountController
     @ResponseBody
     public String ping()
     {
-        System.out.println( "pong");
         return "pong";
         //return new ResponseEntity<>( "pong", HttpStatus.OK );
     }

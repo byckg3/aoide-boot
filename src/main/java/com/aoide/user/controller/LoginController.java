@@ -22,7 +22,6 @@ import com.aoide.user.model.AccountDTO.LoginInput;
 @Slf4j
 @Controller
 @RequestMapping( "/login" )
-@SessionAttributes( "account" )
 public class LoginController
 {
     @Autowired
@@ -43,22 +42,7 @@ public class LoginController
     @PostMapping
     public String login( Model model, @Validated( LoginInput.class ) AccountDTO inputs, Errors errors )
     {
-        if ( !errors.hasErrors() )
-        {
-            var foundAccount = userService.findAccountBy( inputs.getEmail() );
-            if ( foundAccount.isPresent() )
-            {
-                //model.addFlashAttribute( "account", foundAccount.get() );
-                model.addAttribute( "account", foundAccount.get() );
-                log.info( "\nemail: {} password: {}", inputs.getEmail(), inputs.getPassword() );
-
-                return "redirect:/member";
-            }
-        }
-        else
-        {
-            log.error( "error occurs");
-        }
-        return "login";
+        log.info( "PostMapping login()" );
+        return  showLoginForm( model, inputs );
     }
 }

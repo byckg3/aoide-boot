@@ -1,4 +1,4 @@
-package com.aoide;
+package com.aoide.config;
 
 import java.io.IOException;
 
@@ -42,7 +42,7 @@ public class AuthenticationSuccessHandlerImpl extends SavedRequestAwareAuthentic
         {
             Account account = new Account();
 
-            userName = ( (UserDetails) principal).getUsername();
+            userName = ( ( UserDetails ) principal).getUsername();
             account.setName( userName );
 
             session.setAttribute( "account", account );
