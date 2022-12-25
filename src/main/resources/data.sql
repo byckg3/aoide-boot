@@ -26,3 +26,11 @@
 -- WHERE class_id = 'A'
 -- GROUP BY category
 -- ORDER BY 2 DESC;
+
+-- https://www.db-fiddle.com/f/4tJhQHe4NGtpv9vnP5B7g6/0
+-- SELECT P.id, P.text, L.likes
+-- FROM posts AS P
+-- JOIN ( SELECT post_id, COUNT(created_at) AS likes 
+--        FROM post_likes 
+--        GROUP BY post_id ) AS L
+-- ON P.id = L.post_id

@@ -1,6 +1,7 @@
 .gradle
 gradle.properties
 *.trace.db
+*.log
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
