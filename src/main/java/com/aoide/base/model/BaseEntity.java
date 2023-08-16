@@ -15,13 +15,11 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 @EntityListeners( value = AuditingEntityListener.class )
-@MappedSuperclass  // base class for entity with common properties
-public abstract class BaseEntity
+@MappedSuperclass  // A mapped superclass has no separate table defined for it.
+public abstract class BaseEntity  // base class for entity with common properties
 {
     @Id
 	@GeneratedValue( strategy = GenerationType.AUTO )
