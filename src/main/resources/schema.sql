@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS accounts (
-    id              IDENTITY        NOT NULL    AUTO_INCREMENT,
+    id              BIGINT          NOT NULL    AUTO_INCREMENT,
     email           VARCHAR(64)     NOT NULL    UNIQUE,
     password        VARCHAR(64)     NOT NULL,
     name 	        VARCHAR(64)     NOT NULL,
@@ -17,3 +17,5 @@ CREATE TABLE IF NOT EXISTS persistent_logins (
     last_used   TIMESTAMP       NOT NULL,
     PRIMARY KEY (series)
 );
+
+-- sia 5th P.62

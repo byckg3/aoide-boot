@@ -34,3 +34,5 @@
 --        FROM post_likes 
 --        GROUP BY post_id ) AS L
 -- ON P.id = L.post_id
+
+-- https://www.db-fiddle.com/f/du7jwSHtebHnLwjAM5SYv1/0
