@@ -35,4 +35,4 @@
 --        GROUP BY post_id ) AS L
 -- ON P.id = L.post_id
 
--- https://www.db-fiddle.com/f/x6biabkoWrrjFp9vXxFBjW/0
+-- https://www.db-fiddle.com/f/x6biabkoWrrjFp9vXxFBjW/1
